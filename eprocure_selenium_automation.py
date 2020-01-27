@@ -70,7 +70,7 @@ with requests.Session() as s:
             finally:
                 pass
 df_tender = pd.DataFrame({"Tender Details": TENDER_Description, "TENDER_LINK": TENDER_LINK})
-df_tender = pd.read_csv('test_data.csv')
+#df_tender = pd.read_csv('test_data.csv')
 df_tender.drop_duplicates(inplace=True)
 df_tender.to_csv("eprocure_tender.csv")
 print(df_tender)
