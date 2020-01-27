@@ -8,6 +8,8 @@ import warnings
 import pandas as pd
 import pymysql as pms
 from bs4 import BeautifulSoup as bs
+from selenium.webdriver.common.by import By
+
 from selenium import webdriver
 from selenium.webdriver.support import expected_conditions as EC
 from selenium.webdriver.support.ui import WebDriverWait
