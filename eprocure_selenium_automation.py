@@ -12,14 +12,16 @@ from selenium import webdriver
 from selenium.webdriver.support import expected_conditions as EC
 from selenium.webdriver.support.ui import WebDriverWait
 import requests
+from pyvirtualdisplay import Display
+
 warnings.filterwarnings(action="ignore")
 chromedriver = "/home/astrostockarnav/chromedriver78/chromedriver"
-chromedriver = "/home/ayush/geckodriver"
+# chromedriver = "/home/ayush/geckodriver"
 os.environ['webdriver.chrome.driver'] = chromedriver
-# display = Display(visible=0, size=(1024, 768))
-# display.start()
+display = Display(visible=0, size=(1024, 768))
+display.start()
 
-driver = webdriver.Firefox(executable_path=chromedriver)
+driver = webdriver.Chrome(executable_path=chromedriver)
 time.sleep(2)
 
 TENDER_LINK = []
@@ -195,7 +197,7 @@ df_output.to_csv("eprocure_final_emd.csv")
 
 '''close the firefox tab for selenium webdriver'''
 driver.close()
-# display.sendstop()
+display.sendstop()
 '''Now insert the final data to the database'''
 
 conn = pms.connect(host="localhost", user="root", password="astro2019#", db="Tender_Scrap", autocommit=True)
@@ -254,3 +256,4 @@ logging.basicConfig(filename=LOG_FILENAME, level=logging.DEBUG)
 logging.info('Scraping Job Started...')
 logging.error("These are the following errors")
 logging.debug('debug method started...')
+
